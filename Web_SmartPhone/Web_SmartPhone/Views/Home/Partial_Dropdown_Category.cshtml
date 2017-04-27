@@ -1,0 +1,8 @@
+﻿@*@model IEnumerable<Web_SmartPhone.Models.Category>*@
+@*@Html.DropDownListFor(i=>i,ViewBag.v as SelectList, "Điện Thoại", new { @class = "srchTxt" })*@
+@*@Html.DropDownListFor(m=>m.ID,ViewBag.v as SelectList," h","Điện Thoại")*@
+@*@foreach (var item in ViewBag.v)
+{
+    <h1>@item</h1>
+}*@
+@Html.DropDownList("a",ViewBag.ID as SelectList,new { htmlAttributes = new  { @class = "srchTxt" } })

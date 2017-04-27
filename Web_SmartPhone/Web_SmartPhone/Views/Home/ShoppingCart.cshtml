@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "ShoppingCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Web_SmartPhone.Common.Product_Cart_Session>
+    @section cart_controller{       
+<script src="~/Content/Controllerjs/Cart_Controller.js"></script>      
+        }
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+        <li class="active"> SHOPPING CART</li>
+    </ul>
+    <h3>  SHOPPING CART [ <small>@Model.Count() Sản Phẩm </small>]<a href="~/Home/Index" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
+    <hr class="soft" />
+    <table class="table table-bordered">
+        <tr><th> GIỎ HÀNG CỦA BẠN  </th></tr>
+        <tr>
+   
+        </tr>
+    </table>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity/Update</th>
+                <th>Price</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> <img width="60" src="@item.Product.Images" alt="" /></td>
+                   
+                    <td>
+                        <div class="input-append"><input class="span1" id="txtquantity" style="max-width:34px" placeholder="@item.Quantity" data-id="@item.Product.ID" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+                    </td>
+                    <td>@item.Product.Price</td>
+              
+                </tr>
+
+            }
+            <tr>
+                <td colspan="2" style="text-align:right"><strong>TOTAL =</strong></td>
+                <td class="label label-important" style="display:block"> <strong> @Model.Sum(x=>x.Product.Price*x.Quantity) </strong></td>
+            </tr>
+           
+        </tbody>
+    </table>
+        
+    
+    <a href="~/Home/Index" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+
+    <a href="login.html" class="btn btn-large pull-right">Thanh Toán <i class="icon-arrow-right"></i></a>
+    <a class="btn btn-large pull-right" id="capnhat">Cập Nhật </a> 
+    <a href="login.html" class="btn btn-large pull-right">Xóa Giỏ Hàng </a>
+    
+
+</div>
+@*
+    @model List<Web_SmartPhone.Common.Product_Cart_Session>
+    <div class="span9">
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <td>Mã SP</td>
+                    <td>Tên SP</td>
+                    <td>Ảnh SP</td>
+                    <td>Số lượng</td>
+                    <td>Đơn giá</td>
+                    <td>Thành tiền</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model)
+        {
+                   <tr>
+                       <td>@item.Product.ID</td>
+                       <td>@item.Product.Name</td>
+                       <td><img src="@item.Product.Images" width="100"/></td>
+                       <td><input type="text" class="quantity" value="@item.Quantity"/></td>
+                       <td>@item.Product.Price.GetValueOrDefault(0)</td>
+                       <td>@(item.Product.Price.GetValueOrDefault(0)*item.Quantity)</td>
+                       <td><i class="btn btn-xs btn-danger">Xóa</i></td>
+                   </tr>
+
+        }
+            </tbody>
+        </table>
+    </div>*@

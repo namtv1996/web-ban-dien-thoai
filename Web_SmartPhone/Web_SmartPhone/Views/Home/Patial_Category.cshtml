@@ -1,0 +1,9 @@
+﻿
+@*@model List<string>*@
+@model IEnumerable<Web_SmartPhone.Models.Category>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li><a href="@Url.Action("Index2","Home",new { @idcate = @item.ID})"><i class="icon-chevron-right"></i>@item.Name</a></li>
+    }
+</ul>

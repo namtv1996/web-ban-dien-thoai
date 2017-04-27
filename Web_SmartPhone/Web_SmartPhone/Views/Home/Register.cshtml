@@ -1,0 +1,83 @@
+﻿@model Web_SmartPhone.Models.Account
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+        <li class="active">Registration</li>
+    </ul>
+    <h3>Đăng kí</h3>
+    <div class="well">
+        @using (Html.BeginForm("", "", FormMethod.Post))
+        {
+            <div class="control-group">
+                <label class="control-label">Giới tính  <sup>*</sup></label>
+                <div class="controls">
+                    <select class="span1" name="days">
+                        <option value="1">Nam</option>
+                        <option value="2">Nữ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputFname1">Họ tên <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="inputFname1" placeholder="Họ tên">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputFname1">Tên tài khoản<sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="inputFname2" placeholder="Tên tài khoản ">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="input_email">Email <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="input_email" placeholder="Email">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputPassword1">Mật khẩu <sup>*</sup></label>
+                <div class="controls">
+                    <input type="password" id="inputPassword1" placeholder="Mật khẩu">
+                </div>
+            </div>
+
+
+
+            <div class="control-group">
+                <label class="control-label" for="inputFname">Địa chỉ <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="inputFname" placeholder="Địa chỉ">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Số điện thoại <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="inputLname" placeholder="Số điện thoại" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <input type="hidden" name="email_create" value="1">
+                    <input type="hidden" name="is_new_customer" value="1">
+                    <input class="btn btn-large btn-success" type="submit" value="Đăng kí" />
+                </div>
+            </div>
+        }
+        @*<form class="form-horizontal">
+            
+           
+        </form>*@
+    </div>
+
+</div>

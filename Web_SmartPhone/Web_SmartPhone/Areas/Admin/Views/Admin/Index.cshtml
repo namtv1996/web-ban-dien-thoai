@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@model PagedList.IPagedList<Web_SmartPhone.Models.Account>
+    @using PagedList.Mvc;
+
+<div class="span9">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+       <h3>Xin chào @ViewBag.v.Username</h3> 
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>   
+                            <th>Username</th>
+                            <th>Quyền hạn</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.Username</td>
+                              @{
+                                  if (item.Group_Account == 1)
+                                  { <td>Quản trị viên</td>  }
+                                  else
+                                  { <td>Người dùng</td>}
+                              }
+                                <td>
+                                    <a href="~/Admin/Admin/EditAccount?id=@item.ID" class="btn btn-default">Sửa</a>
+                                    <a href="~/Admin/Admin/DeleteAccount?id=@item.ID" class="btn btn-danger">Xóa</a>
+                                </td>
+                                
+                            </tr>
+
+                        }
+                        
+                    </tbody>
+                </table>
+              
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+    
+        <!-- /.panel-body -->
+    </div>
+    <div>
+        <a class="btn btn-outline btn-primary" href="/Admin/Admin/CreateAccount">Tạo Mới</a>
+    </div>
+    <div>@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</div>
+    <!-- /.panel -->
+</div>

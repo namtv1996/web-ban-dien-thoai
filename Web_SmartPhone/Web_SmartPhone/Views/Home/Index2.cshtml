@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<Web_SmartPhone.Models.Product>
+<div class="span9">
+    <h4>Latest Products </h4>
+    <ul class="thumbnails">
+        @{
+            foreach (var item in Model)
+            {
+
+                <li class="span3">
+                    <div class="thumbnail">
+                        <a href="@Url.Action("Product_Details", "Home", new { @masp = @item.ID })"><img src="@item.Images" alt="" /></a>
+                        <div class="caption">
+                            <h5>@item.Name</h5>
+
+                            <h4 style="text-align:center"><a class="btn" href="@Url.Action("Product_Details", "Home", new { @masp = @item.ID })"> <i class="icon-zoom-in"></i></a> <a class="btn" href="~/Home/ShoppingCart?productId=@item.ID&quantity=1">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">@item.Price đ</a></h4>
+                        </div>
+                    </div>
+                </li>
+                }
+            }
+    </ul>
+</div>
